@@ -1,0 +1,18 @@
+[project]
+name = "repmem"
+version = "0.1.0"
+description = "Break-even map of a repetition-code memory under superconducting-style noise"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "matplotlib"]
+authors = [{name = "Degala Chenchupradeep"}]
+license = {text = "MIT"}
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

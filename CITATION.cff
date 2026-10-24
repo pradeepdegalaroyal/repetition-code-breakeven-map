@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Break-even map of a bit-flip repetition-code memory under superconducting-style noise"
+authors:
+  - family-names: Chenchupradeep
+    given-names: Degala
+version: 0.1.0
+date-released: 2026-10-24
+license: MIT
+repository-code: "https://github.com/pradeepdegalaroyal/repetition-code-breakeven-map"
