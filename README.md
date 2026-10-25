@@ -2,21 +2,22 @@
 
 ![License: MIT](https://img.shields.io/badge/license-MIT-green) ![Python](https://img.shields.io/badge/python-3.11-blue) ![CI](https://github.com/pradeepdegalaroyal/repetition-code-breakeven-map/actions/workflows/ci.yml/badge.svg)
 
-**Abstract.** This simulation study maps how much margin a distance-3/5/7 bit-flip repetition-code memory has before encoding stops beating a single idling qubit, as a function of QEC cycle time, ancilla readout error and gate-induced data errors under T1-limited (Pauli-twirled) noise. An exact space-time (Viterbi) decoder is compared with an unencoded qubit and with a history-free final-syndrome decoder. In this model every point of the cycle-time × readout-error grid beats break-even, and the gate-error margin is where the real limit appears.
+**Abstract.** This simulation study maps how much margin a distance-3/5/7 bit-flip repetition-code memory has before encoding stops beating a single idling qubit, as a function of quantum error correction (QEC) cycle time, ancilla readout error and gate-induced data errors under energy-relaxation time (T1)-limited (Pauli-twirled) noise. An exact space-time (Viterbi) decoder is compared with an unencoded qubit and with a history-free final-syndrome decoder. In this model every point of the cycle-time × readout-error grid beats break-even, and the gate-error margin is where the real limit appears.
 
 ## Motivation and gap
 Real-time QEC beyond break-even has been demonstrated (Sivak et al., 2023, doi:10.1038/s41586-023-05782-6), with the practicality of extending coherence called an open question; two-qubit gate fidelities are approaching code thresholds (Evered et al., 2023, doi:10.1038/s41586-023-06481-y). Break-even is normally one experimental point. Here I quantify the *margin* around it, which matters for hardware characterisation and resource estimation. See `docs/RESEARCH_GAP.md` and `docs/METHOD.md`.
 
 ## Method
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#ffffff', 'primaryTextColor': '#000000', 'primaryBorderColor': '#000000', 'lineColor': '#000000', 'secondaryColor': '#ffffff', 'tertiaryColor': '#ffffff', 'background': '#ffffff', 'noteBkgColor': '#ffffff', 'noteTextColor': '#000000', 'actorBkg': '#ffffff', 'actorBorder': '#000000', 'actorTextColor': '#000000', 'signalColor': '#000000', 'signalTextColor': '#000000', 'labelBoxBkgColor': '#ffffff', 'labelTextColor': '#000000', 'clusterBkg': '#ffffff', 'clusterBorder': '#000000'}}}%%
 flowchart LR
-  A[T1, cycle time, p_gate, p_meas] --> B[Sample data flips + noisy syndromes, R=10 rounds]
-  B --> C1[Viterbi space-time decoder]
-  B --> C2[Final-syndrome decoder]
-  C1 --> D[Logical rate per cycle]
+  A["T1, cycle time, p_gate, p_meas"] --> B["Sample data flips + noisy syndromes, R=10 rounds"]
+  B --> C1["Viterbi space-time decoder"]
+  B --> C2["Final-syndrome decoder"]
+  C1 --> D["Logical rate per cycle"]
   C2 --> D
-  A --> E[Unencoded qubit rate]
-  D --> F[Ratio logical / physical]
+  A --> E["Unencoded qubit rate"]
+  D --> F["Ratio logical / physical"]
   E --> F
 ```
 Noise: p_idle = (1-exp(-t/T1))/2 with T1 = 50 µs, plus p_gate flip per cycle on data qubits and p_meas flip on every ancilla readout; final readout ideal. Only bit flips (T1-twirled) are modelled.
@@ -54,7 +55,7 @@ The hypothesis (all grid points < 1; gate break-even > 1%) holds in this model. 
 Phenomenological, independent noise; bit-flip code protects only population, not phase (a full quantum memory would not break even with this code alone); ideal final readout; simulation only, no hardware data; T1 fixed at 50 µs.
 
 ## Future work
-Add Z noise and a surface-code/XZZX memory, calibrate p_gate, p_meas and cycle time from device characterisation data, feed the margin into qubit-count resource estimates, and fit the model to a real repetition-code experiment.
+Add Z noise and a surface-code/XZZX (a Pauli-pattern variant of the surface code) memory, calibrate p_gate, p_meas and cycle time from device characterisation data, feed the margin into qubit-count resource estimates, and fit the model to a real repetition-code experiment.
 
 ## Reproducibility
 ```
@@ -83,4 +84,4 @@ If you use this code, please cite it (see also `CITATION.cff`):
 }
 ```
 
-MIT license (`LICENSE`).
+Massachusetts Institute of Technology (MIT) license (`LICENSE`).
