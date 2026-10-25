@@ -69,4 +69,18 @@ Related work by the author: [erasure-local-stabiliser-measurements](https://gith
 `src/repmem/` simulator and decoders · `experiments/run_all.py` · `tests/` · `results/` · `figures/` · `docs/`
 
 ## Citation
-See `CITATION.cff`. License: MIT.
+
+If you use this code, please cite it (see also `CITATION.cff`):
+
+```bibtex
+@software{chenchupradeep2026repetitionco,
+  author  = {Chenchupradeep, Degala},
+  title   = {Break-even map of a bit-flip repetition-code memory under superconducting-style noise},
+  year    = {2026},
+  version = {0.1.0},
+  url     = {https://github.com/pradeepdegalaroyal/repetition-code-breakeven-map},
+  license = {MIT}
+}
+```
+
+MIT license (`LICENSE`).
